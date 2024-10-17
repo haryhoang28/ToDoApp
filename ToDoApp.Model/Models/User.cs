@@ -39,10 +39,10 @@ namespace ToDoApp.Model
         public string CreatedBy { get => _createdBy; set => _createdBy = value; }
         
         [Column]
-        public DateTime ModifyDate { get => _modifiedDate; set => _modifiedDate = value; }
+        public DateTime ModifiedDate { get => _modifiedDate; set => _modifiedDate = value; }
 
         [Column]
-        public string ModifyBy { get => _modifiedBy; set => _modifiedBy = value; }
+        public string ModifiedBy { get => _modifiedBy; set => _modifiedBy = value; }
 
         public string GetTableName()
         {

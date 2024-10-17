@@ -24,7 +24,7 @@ namespace ToDoApp.BL
         public async Task<T> InsertOne<T>(T baseModel) where T : IBaseModel, ICreationInfo
         {
             var tablename = baseModel.GetTableName();
-            var sql = "INSERT INTO {tablename} ({columns}) VALUES ({values}); SELECT LAST_INSERTED_ID()";
+            var sql = "INSERT INTO {tableName} ({columns}) VALUES ({values}); SELECT LAST_INSERT_ID()";
             // using reflections
             var props = baseModel.GetType().GetProperties();
             var param = new Dictionary<string, object>();
@@ -44,9 +44,9 @@ namespace ToDoApp.BL
                 }
             }
             // Using to replace param
-            sql = sql.Replace("{tableName}", tablename)
-                        .Replace("{Columns}", string.Join(",", columns))
-                        .Replace("{values}", string.Join(".", columns.Select(col => $"@{col}")));
+            sql = sql.Replace("{tableName}", tablename) // để ý viết hoa thuong
+                        .Replace("{columns}", string.Join(",", columns))
+                        .Replace("{values}", string.Join(",", columns.Select(col => $"@{col}")));
 
             using (var conn = _dl.GetConnection(""))
             {

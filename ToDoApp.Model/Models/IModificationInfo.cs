@@ -8,7 +8,7 @@ namespace ToDoApp.Model
 {
     public interface IModificationInfo
     {
-        DateTime ModifyDate { get; set; }
-        string ModifyBy { get; set; }
+        DateTime ModifiedDate { get; set; }
+        string ModifiedBy { get; set; }
     }
 }

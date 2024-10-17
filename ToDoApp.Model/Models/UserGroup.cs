@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace ToDoApp.Model
 {
-    public class User_Group : ICreationInfo, IBaseModel
+    public class UserGroup : ICreationInfo, IBaseModel
     {
-        public DateTime _createdDate {  get; set; }
-        public string _createdBy { get; set; }
+        private DateTime _createdDate {  get; set; }
+        private string _createdBy { get; set; }
 
         [Required]
         

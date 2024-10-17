@@ -5,10 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using ToDoApp.DL;
 
+
 namespace ToDoApp.BL
 {
-    public interface IGroupBL : IBaseBL
+    public class UserBL : BaseBL, IUserBL
     {
-        
+        public UserBL(IUserDL dl) : base(dl)
+        {
+        }
     }
 }
+

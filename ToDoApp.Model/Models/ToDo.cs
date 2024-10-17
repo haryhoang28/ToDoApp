@@ -33,11 +33,11 @@ namespace ToDoApp.Model
 
         [Required]
         [Column]
-        public DateTime ModifyDate { get => _modifiedDate; set => _modifiedDate = value; }
+        public DateTime ModifiedDate { get => _modifiedDate; set => _modifiedDate = value; }
         
         [Required]
         [Column]
-        public string ModifyBy { get => _modifiedBy; set => _modifiedBy = value; }
+        public string ModifiedBy { get => _modifiedBy; set => _modifiedBy = value; }
 
         [Required]
         [Column]
