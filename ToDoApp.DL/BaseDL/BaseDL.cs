@@ -13,7 +13,7 @@ namespace ToDoApp.DL
     {
         public IDbConnection GetConnection(string connectionString)
         {
-            IDbConnection connection = null;    
+            IDbConnection connection = null;
             if (!string.IsNullOrEmpty(connectionString))
             {
                 connection = new MySqlConnection(connectionString);
@@ -37,6 +37,13 @@ namespace ToDoApp.DL
             return res;
         }
 
-        
+        public async Task<int> ExecuteCommandTextAsync(string command, IDictionary<string, object> param, IDbConnection? connection = null, IDbTransaction? transaction = null)
+        {
+            IDbConnection conn = transaction?.Connection != null ? transaction?.Connection : connection;
+            conn.Open();
+            var res = await conn.ExecuteAsync(command, param, transaction, commandType: CommandType.Text);
+            conn.Close();
+            return res;
+        }
     }
 }

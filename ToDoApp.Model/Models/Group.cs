@@ -8,10 +8,13 @@ using System.Threading.Tasks;
 
 namespace ToDoApp.Model
 {
-    public class Group : IBaseModel, ICreationInfo
+    public class Group : IBaseModel, ICreationInfo, IModificationInfo
     {
         private DateTime _createdDate { get; set; } // cái dấu _ chỉ dành cho private
         private string _createdBy { get; set; }
+
+        private DateTime _modifiedDate { get; set; }
+        private string _modifiedBy { get; set; }
         [Key]
         public int GroupId { get; set; }
 
@@ -26,6 +29,14 @@ namespace ToDoApp.Model
         [Required]
         [Column]
         public string CreatedBy { get => _createdBy; set => _createdBy = value; } // lỗi ở đây nhé
+
+        [Required] 
+        [Column]
+        public DateTime ModifiedDate { get => _modifiedDate; set => _modifiedDate = value; }
+
+        [Required]
+        [Column] 
+        public string ModifiedBy { get => _modifiedBy; set => _modifiedBy = value; }
 
         public string GetTableName()
         {

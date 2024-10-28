@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace ToDoApp.Model
 {
-    internal class ToDo : ICreationInfo, IModificationInfo, IBaseModel
+    public class ToDo : ICreationInfo, IModificationInfo, IBaseModel
     {
-        public DateTime _createdDate {  get; set; }
-        public DateTime _modifiedDate { get; set; }
-        public string _createdBy { get; set; }
-        public string _modifiedBy { get; set; }
+        private DateTime _createdDate {  get; set; }
+        private DateTime _modifiedDate { get; set; }
+        private string _createdBy { get; set; }
+        private string _modifiedBy { get; set; }
         [Key]
         [Column]
         public int ToDoId { get; set; }

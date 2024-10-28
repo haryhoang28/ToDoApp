@@ -7,7 +7,7 @@ namespace ToDoApp.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BaseController<T> : ControllerBase where T : IBaseModel, ICreationInfo
+    public class BaseController<T> : ControllerBase where T : IBaseModel, ICreationInfo, IModificationInfo
     {
         protected IBaseBL _bl;
 
@@ -18,7 +18,7 @@ namespace ToDoApp.API.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult> Insert([FromBody] T model)
+        public async Task<IActionResult> Insert([FromBody] T model)
         {
             try
             {
@@ -29,6 +29,34 @@ namespace ToDoApp.API.Controllers
             {
                 return StatusCode(500, ex.Message);
 
+            }
+        }
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update([FromBody] T model, int id)
+        {
+            try
+            {
+                model.SetPrimaryKey(id);
+                var res = await _bl.UpdateOne(model);
+                return Ok(res);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Delete([FromRoute] int id)
+        {
+            try
+            {
+                var res = await _bl.DeleteOne<T>(id);
+                return Ok(res);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
             }
         }
     }

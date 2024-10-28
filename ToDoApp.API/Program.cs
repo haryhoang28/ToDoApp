@@ -9,12 +9,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<IBaseDL, BaseDL>();
 builder.Services.AddScoped<IGroupDL, GroupDL>();
 builder.Services.AddScoped<IUserDL, UserDL>();
-
+builder.Services.AddScoped<IToDoDL, ToDoDL>();
 
 
 builder.Services.AddScoped<IBaseBL,  BaseBL>();
 builder.Services.AddScoped<IGroupBL, GroupBL>();
 builder.Services.AddScoped<IUserBL, UserBL>();
+builder.Services.AddScoped<IToDoBL, ToDoBL>();
 
 
 builder.Services.AddControllers();

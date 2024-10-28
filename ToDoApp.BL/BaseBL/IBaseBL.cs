@@ -13,5 +13,9 @@ namespace ToDoApp.BL
         // using Task which is "async" to have better performance
         Task<T> InsertOne<T>(T baseModel) where T : IBaseModel, ICreationInfo;
 
+        Task<T> UpdateOne<T>(T baseModel) where T: IBaseModel, IModificationInfo;
+
+        Task<bool> DeleteOne<T>(int id) where T: IBaseModel;
+
     }
 }
