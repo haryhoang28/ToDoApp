@@ -16,11 +16,18 @@ namespace ToDoApp.DL
             IDbConnection connection = null;
             if (!string.IsNullOrEmpty(connectionString))
             {
+                Console.WriteLine("dEBUG");
+
                 connection = new MySqlConnection(connectionString);
+                Console.WriteLine("dEBUG 2");
+
             }
             else
             {
+                Console.WriteLine("dEBUG");
                 connection = new MySqlConnection(DatabaseConstant.ConnectionString);
+                Console.WriteLine("dEBUG 2");
+
             }
             return connection;
 

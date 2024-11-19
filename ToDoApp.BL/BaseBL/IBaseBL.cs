@@ -17,5 +17,7 @@ namespace ToDoApp.BL
 
         Task<bool> DeleteOne<T>(int id) where T: IBaseModel;
 
+        
+
     }
 }
